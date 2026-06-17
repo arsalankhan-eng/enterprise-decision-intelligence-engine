@@ -1,0 +1,50 @@
+# Dependencies
+
+node_modules/
+
+# Build
+
+dist/
+build/
+.next/
+
+# Logs
+
+logs/
+*.log
+
+# Environment
+
+.env
+.env.local
+.env.production
+
+# Coverage
+
+coverage/
+
+# IDE
+
+.vscode/
+.idea/
+
+# OS
+
+.DS_Store
+Thumbs.db
+
+# Docker
+
+docker-data/
+
+# NestJS
+
+*.tsbuildinfo
+
+# Database
+
+postgres-data/
+
+# Redis
+
+redis-data/
