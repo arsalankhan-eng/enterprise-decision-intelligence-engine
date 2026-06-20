@@ -1,0 +1,7 @@
+export enum AssessmentStatus {
+  DRAFT = 'DRAFT',
+  SUBMITTED = 'SUBMITTED',
+  ANALYZING = 'ANALYZING',
+  COMPLETED = 'COMPLETED',
+  ARCHIVED = 'ARCHIVED',
+}
