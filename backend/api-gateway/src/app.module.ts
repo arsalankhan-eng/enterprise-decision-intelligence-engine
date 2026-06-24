@@ -6,6 +6,8 @@ import { ProjectsModule } from './modules/projects/projects.module';
 import { AssessmentsModule } from './modules/assessments/assessments.module';
 import { AssessmentInputsModule } from './modules/assessment-inputs/assessment-inputs.module';
 import { AgentRunsModule } from './modules/agent-runs/agent-runs.module';
+import { DecisionsModule } from './modules/decisions/decisions.module';
+import { ExecutionsModule } from './modules/executions/executions.module';
 
 @Module({
   imports: [
@@ -34,6 +36,10 @@ import { AgentRunsModule } from './modules/agent-runs/agent-runs.module';
     AssessmentInputsModule,
 
     AgentRunsModule,
+
+    DecisionsModule,
+
+    ExecutionsModule,
   ],
 })
 export class AppModule {}

@@ -11,7 +11,8 @@ import {
 import { Project } from '../../projects/entities/project.entity';
 import { BaseEntity } from '../../../modules/projects/entities/base.entity';
 import { AssessmentStatus } from '../enum/assessment-status.enum';
-import { AgentRun } from 'src/modules/agent-runs/entities/agent-run.entity';
+import { AgentRun } from '../../../modules/agent-runs/entities/agent-run.entity';
+import { AssessmentInput } from '../../../modules/assessment-inputs/entities/assessment-input.entity';
 
 
 @Entity('assessments')
@@ -64,6 +65,11 @@ export class Assessment extends BaseEntity {
   (agentRun) => agentRun.assessment,
 )
 agentRuns!: AgentRun[];
+@OneToMany(
+  () => AssessmentInput,
+  (input) => input.assessment,
+)
+inputs!: AssessmentInput[];
 
   @Column()
   projectId!: string;
