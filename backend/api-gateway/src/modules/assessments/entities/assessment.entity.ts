@@ -3,13 +3,15 @@ import {
   Entity,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 
 
 
 import { Project } from '../../projects/entities/project.entity';
-import { BaseEntity } from 'src/modules/projects/entities/base.entity';
+import { BaseEntity } from '../../../modules/projects/entities/base.entity';
 import { AssessmentStatus } from '../enum/assessment-status.enum';
+import { AgentRun } from 'src/modules/agent-runs/entities/agent-run.entity';
 
 
 @Entity('assessments')
@@ -56,6 +58,12 @@ export class Assessment extends BaseEntity {
     name: 'projectId',
   })
   project!: Project;
+
+  @OneToMany(
+  () => AgentRun,
+  (agentRun) => agentRun.assessment,
+)
+agentRuns!: AgentRun[];
 
   @Column()
   projectId!: string;

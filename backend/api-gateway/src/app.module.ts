@@ -5,6 +5,7 @@ import { HealthModule } from './modules/health/health.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { AssessmentsModule } from './modules/assessments/assessments.module';
 import { AssessmentInputsModule } from './modules/assessment-inputs/assessment-inputs.module';
+import { AgentRunsModule } from './modules/agent-runs/agent-runs.module';
 
 @Module({
   imports: [
@@ -31,6 +32,8 @@ import { AssessmentInputsModule } from './modules/assessment-inputs/assessment-i
     AssessmentsModule,
 
     AssessmentInputsModule,
+
+    AgentRunsModule,
   ],
 })
 export class AppModule {}
