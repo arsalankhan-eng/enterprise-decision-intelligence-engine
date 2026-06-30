@@ -8,6 +8,8 @@ import { AssessmentInputsModule } from './modules/assessment-inputs/assessment-i
 import { AgentRunsModule } from './modules/agent-runs/agent-runs.module';
 import { DecisionsModule } from './modules/decisions/decisions.module';
 import { ExecutionsModule } from './modules/executions/executions.module';
+import { AgentsModule } from './modules/agents/agents.module';
+import { DecisionEngineModule } from './modules/decision-engine/decision-engine.module';
 
 @Module({
   imports: [
@@ -40,6 +42,10 @@ import { ExecutionsModule } from './modules/executions/executions.module';
     DecisionsModule,
 
     ExecutionsModule,
+
+    AgentsModule,
+
+    DecisionEngineModule,
   ],
 })
 export class AppModule {}

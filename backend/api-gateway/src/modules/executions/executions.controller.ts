@@ -1,10 +1,10 @@
 import {
   Controller,
+  Get,
   Param,
   ParseUUIDPipe,
   Post,
 } from '@nestjs/common';
-
 import {
   ApiOperation,
   ApiTags,
@@ -34,4 +34,50 @@ export class ExecutionsController {
       agentRunId,
     );
   }
+
+  @Get()
+@ApiOperation({
+  summary: 'Get execution history',
+})
+getExecutionHistory() {
+  return this.executionsService.getExecutionHistory();
+}
+
+
+
+@Get('/dashboard')
+@ApiOperation({
+  summary: 'Dashboard Statistics',
+})
+getDashboardStatistics() {
+  return this.executionsService.getDashboardStatistics();
+}
+
+
+@Get('/timeline/:agentRunId')
+getExecutionTimeline(
+  @Param(
+    'agentRunId',
+    ParseUUIDPipe,
+  )
+  agentRunId: string,
+) {
+  return this.executionsService.getExecutionTimeline(
+    agentRunId,
+  );
+}
+
+
+@Get('/explainability/:agentRunId')
+getExplainability(
+  @Param(
+    'agentRunId',
+    ParseUUIDPipe,
+  )
+  agentRunId: string,
+) {
+  return this.executionsService.getExplainability(
+    agentRunId,
+  );
+}
 }

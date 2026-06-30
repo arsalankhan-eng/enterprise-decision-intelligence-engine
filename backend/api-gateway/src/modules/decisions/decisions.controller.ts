@@ -23,26 +23,26 @@ export class DecisionsController {
     private readonly decisionsService: DecisionsService,
   ) {}
 
-  @Post('/agent-run/:agentRunId')
-  @ApiOperation({
-    summary:
-      'Create decision for agent run',
-  })
-  create(
-    @Param(
-      'agentRunId',
-      ParseUUIDPipe,
-    )
-    agentRunId: string,
+//   @Post('/agent-run/:agentRunId')
+//   @ApiOperation({
+//     summary:
+//       'Create decision for agent run',
+//   })
+//   create(
+//     @Param(
+//       'agentRunId',
+//       ParseUUIDPipe,
+//     )
+//     agentRunId: string,
 
-    @Body()
-    dto: CreateDecisionDto,
-  ) {
-    return this.decisionsService.create(
-      agentRunId,
-      dto,
-    );
-  }
+//     @Body()
+//     dto: CreateDecisionDto,
+//   ) {
+//     return this.decisionsService.create(
+//       agentRunId,
+//       dto,
+//     );
+//   }
 
   @Get()
   @ApiOperation({

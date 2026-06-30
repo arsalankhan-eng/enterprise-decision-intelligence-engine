@@ -12,47 +12,13 @@ import {
 } from 'typeorm';
 
 import { Decision } from './entities/decision.entity';
-import { AgentRun } from '../agent-runs/entities/agent-run.entity';
-
-import { CreateDecisionDto } from './dto/create-decision.dto';
 
 @Injectable()
 export class DecisionsService {
   constructor(
     @InjectRepository(Decision)
     private readonly decisionRepository: Repository<Decision>,
-
-    @InjectRepository(AgentRun)
-    private readonly agentRunRepository: Repository<AgentRun>,
   ) {}
-
-  async create(
-    agentRunId: string,
-    dto: CreateDecisionDto,
-  ) {
-    const run =
-      await this.agentRunRepository.findOne({
-        where: {
-          id: agentRunId,
-        },
-      });
-
-    if (!run) {
-      throw new NotFoundException(
-        `Agent Run ${agentRunId} not found`,
-      );
-    }
-
-    const decision =
-      this.decisionRepository.create({
-        ...dto,
-        agentRunId,
-      });
-
-    return this.decisionRepository.save(
-      decision,
-    );
-  }
 
   async findAll() {
     return this.decisionRepository.find({
@@ -62,13 +28,41 @@ export class DecisionsService {
     });
   }
 
+  async findOne(
+    id: string,
+  ) {
+    const decision =
+      await this.decisionRepository.findOne({
+        where: {
+          id,
+        },
+      });
+
+    if (!decision) {
+      throw new NotFoundException(
+        `Decision ${id} not found`,
+      );
+    }
+
+    return decision;
+  }
+
   async findByAgentRun(
     agentRunId: string,
   ) {
-    return this.decisionRepository.find({
-      where: {
-        agentRunId,
-      },
-    });
+    const decision =
+      await this.decisionRepository.findOne({
+        where: {
+          agentRunId,
+        },
+      });
+
+    if (!decision) {
+      throw new NotFoundException(
+        `Decision for Agent Run ${agentRunId} not found`,
+      );
+    }
+
+    return decision;
   }
 }
